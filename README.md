@@ -51,3 +51,15 @@ java -jar target/twitter-raffle-1.0.0-SNAPSHOT-runner.jar
 # Run native mode
 target/twitter-raffle-1.0.0-SNAPSHOT-runner
 ```
+
+## Docker with native image
+ 
+ Build with multistage build
+```shell
+docker build -f src/main/docker/Dockerfile.multistage -t parisjug/twitter-raffle:1.0.0-SNAPSHOT .
+```
+
+Run
+```shell
+docker run -i --rm -p 8080:8080 --env twitter4j.oauth.consumerKey=<consumerKey> --env twitter4j.oauth.consumerSecret=<consumerSecret> --env twitter4j.oauth.accessToken=<accessToken> --env twitter4j.oauth.accessTokenSecret=<accessTokenSecret> parisjug/twitter-raffle:1.0.0-SNAPSHOT
+```
